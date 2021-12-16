@@ -1,5 +1,5 @@
 import { Relayer } from 'defender-relay-client'
-import { beaconDrawLockAndNetworkTotalSupplyPush } from '@pooltogether/v4-autotask-lib'
+import { receiverDrawLockAndNetworkTotalSupplyPush } from '@pooltogether/v4-autotask-lib'
 import {mainnet as mainnetContractList } from '@pooltogether/v4-pool-data'
 
 export async function handler(event: any) {
@@ -8,6 +8,10 @@ export async function handler(event: any) {
     beaconChain: {
       chainId: 1,
       providerUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+    },
+    targetReceiverChain: {
+      chainId: 43114,
+      providerUrl: 'https://api.avax.network/ext/bc/C/rpc',
     },
     allPrizePoolNetworkChains: [
       {
@@ -26,12 +30,9 @@ export async function handler(event: any) {
   }
 
   try {
-    const transactionPopulated = await beaconDrawLockAndNetworkTotalSupplyPush(mainnetContractList, config)
+    const transactionPopulated = await receiverDrawLockAndNetworkTotalSupplyPush(mainnetContractList, config)
     if (transactionPopulated) {
-
-      /**
-       * Execute Transaction to push the Draw struct and TotalNetworkSupply to Ethereum Mainnet
-       */
+      // Execute Transaction to push the Draw struct and TotalNetworkSupply to Ethereum Mainnet
       let transactionSentToNetwork = await relayer.sendTransaction({
         data: transactionPopulated.data,
         to: transactionPopulated.to,

@@ -1,4 +1,4 @@
-# Beacon Polygon Mainnet LockAndPush V1.1.0
+# Receiver Polygon Mainnet LockAndPush V1.1.0
 
 **Environment Variable** 
 ```.sh 
