@@ -42,7 +42,7 @@ export async function handler(event: any) {
 
       console.log('TransactionHash:', transactionSentToNetwork.hash)
     } else {
-      throw new Error('DrawBeacon: Transaction not populated')
+      throw new Error('ReceiverTimelockTrigger: Waiting to push the Draw struct and TotalNetworkSupply to Polygon Mainnet')
     }
   } catch (error) {
     console.log(error)
