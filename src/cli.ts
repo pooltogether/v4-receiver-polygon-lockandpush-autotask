@@ -9,7 +9,6 @@ if (require.main === module) {
     POLYGON_MAINNET_PROVIDER_URL: polygonMainnetProviderURL,
     AVALANCHE_MAINNET_PROVIDER_URL: avalancheMainnetProviderURL,
     OPTIMISM_MAINNET_PROVIDER_URL: optimismMainnetProviderURL
-
   } = process.env;
   handler({
     apiKey,
