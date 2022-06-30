@@ -12,8 +12,8 @@ if (require.main === module) {
 
   } = process.env;
   handler({
-    apiKey: RELAYER_API_KEY,
-    apiSecret: RELAYER_API_SECRET,
+    apiKey,
+    apiSecret,
     secrets: {
       ethereumMainnetProviderURL,
       polygonMainnetProviderURL,
